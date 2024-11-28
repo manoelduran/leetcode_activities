@@ -6,17 +6,22 @@
 var validPalindrome = function (s) {
   let left = 0;
   let right = s.length - 1;
-  const isPalindrome = (left, right) => {
-    while (left < right) {
-      if (s[left] !== s[right]) {
-        return false;
-      }
-    }
-    return true;
-  };
   while (left < right) {
     if (s[left] !== s[right]) {
-      return isPalindrome(left + 1, right) || isPalindrome(left, right - 1);
+      return (
+        isPalindrome(s, left + 1, right) || isPalindrome(s, left, right - 1)
+      );
+    }
+    left++;
+    right--;
+  }
+  return true;
+};
+
+const isPalindrome = (s, left, right) => {
+  while (left < right) {
+    if (s[left] !== s[right]) {
+      return false;
     }
     left++;
     right--;
@@ -27,3 +32,6 @@ var validPalindrome = function (s) {
 const s = "dad";
 const result = validPalindrome(s);
 console.log("result", result);
+
+// Time complexity: O(n)
+// Space complexity: O(1)
