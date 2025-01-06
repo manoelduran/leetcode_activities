@@ -3,6 +3,7 @@ class HashTable {
     this.size = 0;
     this.table = new Array(127);
   }
+
   // DJB2 Hash Function
   _hash(key) {
     let hash = 5381;
@@ -11,6 +12,21 @@ class HashTable {
     }
     return Math.abs(hash) % this.table.length;
   }
+
+  has(key) {
+    const index = this._hash(key);
+    if (!this.table[index]) {
+      return false;
+    }
+    for (let i = 0; i < this.table[index].length; i++) {
+      if (this.table[index][i][0] === key) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  keys() {}
 
   set(key, value) {
     const index = this._hash(key);
@@ -32,6 +48,7 @@ class HashTable {
     this.table[index].push([key, value]);
     this.size++;
   }
+
   get(key) {
     const index = this._hash(key);
 
@@ -43,6 +60,7 @@ class HashTable {
       if (k === key) return v;
     }
   }
+
   remove(key) {
     const index = this._hash(key);
     if (!this.table[index]) {
@@ -63,4 +81,5 @@ const myHashTable = new HashTable();
 myHashTable.set("age", "26");
 myHashTable.set("country", "Spain");
 myHashTable.remove("country");
-console.log(myHashTable);
+myHashTable.has("age");
+console.log(myHashTable.has("country"));
