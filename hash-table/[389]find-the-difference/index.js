@@ -17,12 +17,13 @@ var findTheDifference = function (s, t) {
     }
     map.set(t[i], map.get(t[i]) - 1);
   }
+  console.log(map);
 };
 
-const s = "abcd";
-const t = "abcde";
+const s = "a";
+const t = "aa";
 const result = findTheDifference(s, t);
 console.log(result);
 
 // Time complexity: O(n)
-// Space complexity: O(n)
+// Space complexity: O(1) because the size of the map is fixed at 26 characters in the English alphabet
