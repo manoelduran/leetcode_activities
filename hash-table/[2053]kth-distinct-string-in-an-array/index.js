@@ -17,8 +17,6 @@ var kthDistinct = function (arr, k) {
   });
   const mappedArray = Array.from(map.keys());
 
-  console.log(mappedArray.length, k);
-
   if (mappedArray.length < k) {
     return "";
   }
@@ -1016,3 +1014,6 @@ const arr = [
 const k = 766;
 const result = kthDistinct(arr, k);
 console.log(result);
+
+// Time Complexity: O(n)
+// Space Complexity: O(n)
