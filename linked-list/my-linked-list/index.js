@@ -89,6 +89,35 @@ class LinkedList {
    * Time Complexity: O(n)
    * Space Complexity: O(1)
    */
+  insertAtSpecificNode(position, data) {
+    const newNode = new Node(data);
+    let node = this.head;
+
+    if (position === 1) {
+      newNode.next = this.head;
+      this.head = newNode;
+      return this.head;
+    }
+
+    if (node === null) {
+      console.log("Position is out of bounds.");
+      return this.head;
+    }
+
+    for (let i = 1; i < position - 1 && node !== null; i++) {
+      node = node.next;
+    }
+
+    newNode.next = node.next;
+    node.next = newNode;
+
+    return this.head;
+  }
+
+  /**
+   * Time Complexity: O(n)
+   * Space Complexity: O(1)
+   */
   size() {
     let count = 0;
     let node = this.head;
@@ -170,4 +199,5 @@ console.log("insertAtBeginning", result.insertAtBeginning(22));
 console.log("insertAtEnd", result.insertAtEnd(33));
 console.log("insertAfterANode", result.insertAfterANode(13, 45));
 console.log("insertBeforeANode", result.insertBeforeANode(13, 44));
+console.log("insertAtSpecificNode", result.insertAtSpecificNode(4, 55));
 console.log("print", result.print());
