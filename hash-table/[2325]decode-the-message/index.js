@@ -6,6 +6,7 @@
  */
 var decodeMessage = function (key, message) {
   const map = new Map();
+  for (let i = 0; i < key.length; i++) {}
 };
 
 const key = "12345";
